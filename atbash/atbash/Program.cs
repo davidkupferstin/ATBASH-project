@@ -16,32 +16,34 @@ namespace atbash
 
 
 
-
-
-        static Dictionary<string, string> find_dangerous_word(string message, string decripted_message)
+        static void warning_message(Func<string, string, Dictionary<string, string>> func, string arg1, string arg2)
         {
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            string[] word_array = decripted_message.Split();
-            dict["decripted_message"] = decripted_message;
-            dict["message"] = message;
-            dict["dangerous word"] = "";
-            int points = 0;
-            string dangerous_word = "bomb nukhba fighter rocket secret";
-            foreach (string word in word_array)
-            {
-                if (dangerous_word.Contains(word))
-                {
-                    points++;
-                    if (!dict["dangerous word"].Contains(word))
-                    {
-                        dict["dangerous word"] += $",{word}";
-                    }
-                }
-            }
 
-            dict["points"] = points.ToString();
-            return dict;
+            Dictionary<string, string> dict = func(arg1, arg2);
+            int points = Int16.Parse(dict["points"]);
+            if (points >= 1 && points <= 5)
+            {
+
+                dict["message"] += " WARNING";
+                Console.WriteLine($"the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                    $"the total points is: {dict["points"]}");
+
+            }
+            else if (points >= 6 && points <= 10)
+            {
+                dict["message"] += "DANGER";
+                Console.WriteLine($" the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                    $"the total points is: {dict["points"]}");
+            }
+            else if (points >= 11 && points <= 15)
+            {
+                dict["message"] += "ULTRA AlErT";
+                Console.WriteLine($" the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                    $"the total points is: {dict["points"]}");
+            }
         }
+
+      
 
 
     }
