@@ -1,5 +1,4 @@
 # ATBASH-project
-<<<<<<< HEAD
 #
 =======
 # itai fuchs is the chiper master
