@@ -11,7 +11,7 @@ namespace atbash
         static void Main(string[] args)
         {
             String chiper = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.";
-            find_dangerous_word(chiper);
+            warning_message(find_dangerous_word(chiper), chiper);
         }
        static String DecryptionOfTheCipher(String _cipher)
         {
@@ -69,12 +69,12 @@ namespace atbash
             return dict;
         }
 
-    }
+    
 
-     static void warning_message(Func<string, string, Dictionary<string, string>> func, string arg1, string arg2)
+     static void warning_message(Func<string, string, Dictionary<string, string>> func, string message)
         {
-
-            Dictionary<string, string> dict = func(arg1, arg2);
+            string decripted_message = DecryptionOfTheCipher(message) ;
+            Dictionary<string, string> dict = func(message, decripted_message);
             int points = Int16.Parse(dict["points"]);
             if (points >= 1 && points <= 5)
             {
