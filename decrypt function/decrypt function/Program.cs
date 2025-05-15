@@ -12,9 +12,7 @@ namespace decrypt_function
         {
             String DecryptionOfTheCipher(String _cipher)
             {
-                char[] upper_case = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-                char[] lower_case = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-                string arranged = "";
+                string arranged = null;
                 for (int i = 0; i < _cipher.Length; i++)
                 {
                     bool notLetter = false;
@@ -22,12 +20,12 @@ namespace decrypt_function
                     {
                         if (_cipher[i] == 'A' + j)
                         {
-                            arranged += upper_case[25 - (j)];
+                            arranged += ((char)('Z'- (j)));
                             notLetter = true;
                         }
                         if (_cipher[i] == 'a' + j)
                         {
-                            arranged += lower_case[25 - (j)];
+                            arranged += ((char)('z' - (j)));
                             notLetter = true;
                         }
                     }
