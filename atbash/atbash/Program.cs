@@ -11,7 +11,7 @@ namespace atbash
         static void Main(string[] args)
         {
             String chiper = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.";
-            warning_message(find_dangerous_word(chiper), chiper);
+            warning_message(find_dangerous_word, chiper);
         }
        static String DecryptionOfTheCipher(String _cipher)
         {
@@ -39,23 +39,24 @@ namespace atbash
             }
             return arranged;
         }
-       
 
 
 
-        static Dictionary<string, string> find_dangerous_word(string message)
+
+        static Dictionary<string, string> find_dangerous_word(string message, string decrypted_message)
+
         {
             string decripted_message = DecryptionOfTheCipher(message);
             Dictionary<string, string> dict = new Dictionary<string, string>();
-            string[] word_array = decripted_message.Split();
+            string[] word_array = decripted_message.Split(' ');
             dict["decripted_message"] = decripted_message;
             dict["message"] = message;
             dict["dangerous word"] = "";
             int points = 0;
-            string dangerous_word = "bomb nukhba fighter rocket secret";
+            string[] dangerous_word = { "bomb", "nukhba", "fighter", "rocket", "secret","attac" };
             foreach (string word in word_array)
             {
-                if (dangerous_word.Contains(word))
+                if (dangerous_word.Contains(word.ToLower()) || dangerous_word.Contains(word.Substring(0, word.Length - 1).ToLower()))
                 {
                     points++;
                     if (!dict["dangerous word"].Contains(word))
@@ -79,21 +80,21 @@ namespace atbash
             if (points >= 1 && points <= 5)
             {
 
-                dict["message"] += " WARNING";
-                Console.WriteLine($"the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                dict["message"] += " \nWARNING";
+                Console.WriteLine($"the message is:\n {dict["message"]}\nthe decripted message is:\n {dict["decripted_message"]}\n" +
                     $"the total points is: {dict["points"]}");
 
             }
             else if (points >= 6 && points <= 10)
             {
-                dict["message"] += "DANGER";
-                Console.WriteLine($" the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                dict["message"] += "\nDANGER";
+                Console.WriteLine($" the message is:\n {dict["message"]}\nthe decripted message is:\n {dict["decripted_message"]}\n" +
                     $"the total points is: {dict["points"]}");
             }
             else if (points >= 11 && points <= 15)
             {
-                dict["message"] += "ULTRA AlErT";
-                Console.WriteLine($" the message is: {dict["message"]}\nthe decripted message is: {dict["decripted_message"]}\n" +
+                dict["message"] += "\nULTRA AlErT";
+                Console.WriteLine($" the message is:\n {dict["message"]}\nthe decripted message is:\n {dict["decripted_message"]}\n" +
                     $"the total points is: {dict["points"]}");
             }
         }
