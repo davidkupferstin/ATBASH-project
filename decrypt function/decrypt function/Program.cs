@@ -10,39 +10,36 @@ namespace decrypt_function
     {
         static void Main(string[] args)
         {
-            char[] function = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            String DecryptionOfTheCipher(String _cipher, char[] _function)
-            {              
-                
-                List<char> arguments = new List<char>();
-                String argumentses1 = null;
-                for (int i = 0; i < _cipher.Length -1; i++) 
+            String DecryptionOfTheCipher(String _cipher)
+            {
+                char[] upper_case = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+                char[] lower_case = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+                string arranged = "";
+                for (int i = 0; i < _cipher.Length; i++)
                 {
-                    if (_cipher[i] == ' ')
+                    bool notLetter = false;
+                    for (int j = 0; j < 26; j++)
                     {
-                        arguments.Add(' ');
-                    }
-                    else
-                    {
-                        for (int j = 0; j < _function.Length - 1; j++)
+                        if (_cipher[i] == 'A' + j)
                         {
-                            if (_cipher[i] == _function[j])
-                            {                            
-                                arguments.Add(_function[_function.Length - (j + 1)]);
-                            }
+                            arranged += upper_case[25 - (j)];
+                            notLetter = true;
                         }
-
+                        if (_cipher[i] == 'a' + j)
+                        {
+                            arranged += lower_case[25 - (j)];
+                            notLetter = true;
+                        }
                     }
-                    
+                    if (notLetter == false)
+                    {
+                        arranged += _cipher[i];
+                    }
                 }
-                foreach (var item in arguments)
-                {
-                    argumentses1+= item;
-                }
-                return argumentses1;
+                return arranged;
             }
-            String Cipher = "gsrh rh z yzw vmnvb hvxvig";
-            Console.WriteLine(DecryptionOfTheCipher(Cipher, function));
+            String Cipher = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.";
+            Console.WriteLine(DecryptionOfTheCipher(Cipher));
         }
     }
 }
