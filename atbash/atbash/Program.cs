@@ -25,11 +25,13 @@ namespace atbash
                     {
                         arranged += ((char)('Z' - (j)));
                         notLetter = true;
+                        break
                     }
-                    if (_cipher[i] == 'a' + j)
+                    else if (_cipher[i] == 'a' + j)
                     {
                         arranged += ((char)('z' - (j)));
                         notLetter = true;
+                        break;
                     }
                 }
                 if (notLetter == false)
