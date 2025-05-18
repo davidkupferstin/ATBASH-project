@@ -25,7 +25,7 @@ namespace atbash
                     {
                         arranged += ((char)('Z' - (j)));
                         notLetter = true;
-                        break
+                        break;  
                     }
                     else if (_cipher[i] == 'a' + j)
                     {
