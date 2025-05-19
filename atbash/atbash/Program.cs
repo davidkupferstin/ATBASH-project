@@ -20,19 +20,11 @@ namespace atbash
             {
                 if (_cipher[i] >= 'A' && _cipher[i] <= 'Z')
                 {
-<<<<<<< HEAD
                     Arranged += ((char)(('A' + 'Z') - (_cipher[i])));
                 }
                 else if (_cipher[i] >= 'a' && _cipher[i] <= 'z')
                 {
                     Arranged += ((char)(('a' + 'z') - (_cipher[i])));
-=======
-                    arranged += ((char)(('A' + 'Z') - (_cipher[i])));
-                }
-                else if (_cipher[i] >= 'a' && _cipher[i] <= 'z')
-                {
-                    arranged += ((char)(('a' + 'z') - (_cipher[i])));
->>>>>>> 7892f540b71c2d674b03477dc913647bf048c050
                 }
                 else
                 {
