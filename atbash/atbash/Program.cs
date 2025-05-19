@@ -15,23 +15,23 @@ namespace atbash
         }
         static String DecryptionOfTheCipher(String _cipher)
         {
-            string arranged = null;
+            string Arranged = null;
             for (int i = 0; i < _cipher.Length; i++)
             {
                 if (_cipher[i] >= 'A' && _cipher[i] <= 'Z')
                 {
-                    arranged += ((char)(('Z' + 'A') - (_cipher[i])));
+                    Arranged += ((char)(('A' + 'Z') - (_cipher[i])));
                 }
                 else if (_cipher[i] >= 'a' && _cipher[i] <= 'z')
                 {
-                    arranged += ((char)(('z' + 'a') - (_cipher[i])));
+                    Arranged += ((char)(('a' + 'z') - (_cipher[i])));
                 }
                 else
                 {
-                    arranged += _cipher[i];
+                    Arranged += _cipher[i];
                 }
             }
-            return arranged;
+            return Arranged;
         }
 
 
