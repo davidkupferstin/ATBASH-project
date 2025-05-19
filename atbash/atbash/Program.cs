@@ -13,28 +13,20 @@ namespace atbash
             String chiper = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.";
             warning_message(find_dangerous_word, chiper);
         }
-       static String DecryptionOfTheCipher(String _cipher)
+        static String DecryptionOfTheCipher(String _cipher)
         {
             string arranged = null;
             for (int i = 0; i < _cipher.Length; i++)
             {
-                bool notLetter = false;
-                for (int j = 0; j < 26; j++)
+                if (_cipher[i] >= 'A' && _cipher[i] <= 'Z')
                 {
-                    if (_cipher[i] == 'A' + j)
-                    {
-                        arranged += ((char)('Z' - (j)));
-                        notLetter = true;
-                        break;  
-                    }
-                    else if (_cipher[i] == 'a' + j)
-                    {
-                        arranged += ((char)('z' - (j)));
-                        notLetter = true;
-                        break;
-                    }
+                    arranged += ((char)(('Z' + 'A') - (_cipher[i])));
                 }
-                if (notLetter == false)
+                else if (_cipher[i] >= 'a' && _cipher[i] <= 'z')
+                {
+                    arranged += ((char)(('z' + 'a') - (_cipher[i])));
+                }
+                else
                 {
                     arranged += _cipher[i];
                 }
